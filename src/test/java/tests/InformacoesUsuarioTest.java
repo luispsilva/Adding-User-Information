@@ -27,7 +27,7 @@ public class InformacoesUsuarioTest {
     public TestName test = new TestName();
 
     @Before
-    public void setUP(){
+    public void setUP() {
         //Abrindo o navegador
         System.setProperty("webdriver.chrome.driver", "C:\\Users\\drivers\\chromedriver.exe");
         navegador = new ChromeDriver();
@@ -86,31 +86,31 @@ public class InformacoesUsuarioTest {
 
      */
 
-        @Test
-        public void removerUmContatoDeUmUsuario(){
-            //Clicar no elemento (ícone de lixeira) pelo seu xpath //span[text()="+55111118888"]/following-sibling::a
-            navegador.findElement(By.xpath("//span[text()=\"+55111118888\"]/following-sibling::a")).click();
-            // Confirmar a janela javascript
-            navegador.switchTo().alert().accept();
-            // Validar que a mensagem apresentada foi Rest in peace, dear phone!
-            WebElement mensagemPopup2 = navegador.findElement(By.id("toast-container"));
-            String mensagem2 = mensagemPopup2.getText();
-            assertEquals("Rest in peace, dear phone!", mensagem2);
+    @Test
+    public void removerUmContatoDeUmUsuario() {
+        //Clicar no elemento (ícone de lixeira) pelo seu xpath //span[text()="+55111118888"]/following-sibling::a
+        navegador.findElement(By.xpath("//span[text()=\"+55111118888\"]/following-sibling::a")).click();
+        // Confirmar a janela javascript
+        navegador.switchTo().alert().accept();
+        // Validar que a mensagem apresentada foi Rest in peace, dear phone!
+        WebElement mensagemPopup2 = navegador.findElement(By.id("toast-container"));
+        String mensagem2 = mensagemPopup2.getText();
+        assertEquals("Rest in peace, dear phone!", mensagem2);
 
-            String screenshotArquivo = "/Users/luisp/IdeaProjects/report/taskit/" + Generator.dataHoraParaArquivo() + test.getMethodName()+ ".png";
-            Screenshot.take(navegador, screenshotArquivo);
-            // Aguardar 10 segundos para que a janela desapareça
-            WebDriverWait aguardar = new WebDriverWait(navegador,10);
-            aguardar.until(ExpectedConditions.stalenessOf(mensagemPopup2));
-            // Clicar no link com texto "Logout"
-            navegador.findElement(By.linkText("Logout")).click();
-        }
+        String screenshotArquivo = "/Users/luisp/IdeaProjects/report-projects/taskit/" + Generator.dataHoraParaArquivo() + test.getMethodName() + ".png";
+        Screenshot.take(navegador, screenshotArquivo);
+        // Aguardar 10 segundos para que a janela desapareça
+        WebDriverWait aguardar = new WebDriverWait(navegador, 10);
+        aguardar.until(ExpectedConditions.stalenessOf(mensagemPopup2));
+        // Clicar no link com texto "Logout"
+        navegador.findElement(By.linkText("Logout")).click();
+    }
 
     @After
-    public void tearDown(){
+    public void tearDown() {
         //Fechar o navegador
         navegador.quit();
     }
 
-
 }
+
