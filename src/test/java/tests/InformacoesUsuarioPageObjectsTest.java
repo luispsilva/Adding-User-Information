@@ -44,8 +44,8 @@ public class InformacoesUsuarioPageObjectsTest {
 
         assertEquals(mensagemEsperada, textoToast);
     }
-   /* @After
+    @After
     public void tearDown(){
         navegador.quit();
-    }*/
+    }
 }
